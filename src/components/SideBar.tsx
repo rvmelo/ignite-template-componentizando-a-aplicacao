@@ -2,6 +2,7 @@ import { useState } from "react";
 import { api } from "../services/api";
 
 import { Button } from '../components/Button';
+import { memo } from "react";
 
 interface GenreResponseProps {
   id: number;
@@ -15,7 +16,7 @@ interface SideBarProps {
   handleClickButton(id: number): void;
 }
 
-export function SideBar({genres, selectedGenreId, handleClickButton}: SideBarProps) {
+export function SideBarComponent({genres, selectedGenreId, handleClickButton}: SideBarProps) {
   // Complete aqui
 
   return (
@@ -38,3 +39,7 @@ export function SideBar({genres, selectedGenreId, handleClickButton}: SideBarPro
   )
 
 }
+
+export const SideBar = memo(SideBarComponent, (previousProps, nextProps) => {
+  return Object.is(previousProps, nextProps)
+})

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { MovieCard } from '../components/MovieCard';
 
 interface MovieProps {
@@ -22,7 +23,7 @@ interface ContentProps {
   selectedGenre: GenreResponseProps;
 }
 
-export function Content({movies, selectedGenre}: ContentProps) {
+export function ContentComponent({movies, selectedGenre}: ContentProps) {
   // Complete aqui
 
   return (
@@ -42,3 +43,7 @@ export function Content({movies, selectedGenre}: ContentProps) {
   )
 
 }
+
+export const Content = memo(ContentComponent, (previousProps, NextProps) => {
+  return Object.is(previousProps, NextProps);
+} )
